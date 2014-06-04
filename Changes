@@ -1,5 +1,10 @@
 Revision history for Media-Type-Simple
 
+0.03
+	- removed MIME::Type::Simple stub
+	- minor updates of documentation
+	- minor updates to MIME types
+
 0.02    26 January 2009
 	- Renamed to Media::Type::Simple
 	- Changed distro to Makemaker-based since Module::Build cannot

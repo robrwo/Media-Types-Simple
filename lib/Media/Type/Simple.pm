@@ -22,7 +22,7 @@ use Storable qw( freeze thaw );
 
 =head1 NAME
 
-Media::Type::Simple - MIME Media Types and their file extensions
+Media::Type::Simple - MIME Types and their file extensions
 
 =begin readme
 
@@ -55,11 +55,11 @@ Using Build.PL (if you have Module::Build installed):
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
@@ -282,6 +282,7 @@ returns the list
     # Some known special cases (keys are normalised). Not exhaustive.
 
     my %SPEC_CASES = (
+       "audio/flac"         => [qw( application/flac )],
        "application/cdf"    => [qw( application/netcdf )],
        "application/dms"    => [qw( application/octet-stream )],
        "application/x-java-source" => [qw( text/plain )],
@@ -294,6 +295,7 @@ returns the list
        "application/ms-pki.stl"    => [qw( application/vnd.ms-pki.stl )],
        "application/ndtcdf"  => [qw( application/cdf )],
        "application/netfpx" => [qw( image/vnd.fpx image/vnd.net-fpx )],
+       "audio/ogg"          => [qw( application/ogg )],
        "image/fpx"          => [qw( application/vnd.netfpx image/vnd.net-fpx )],
        "image/netfpx"       => [qw( application/vnd.netfpx image/vnd.fpx )],
        "text/c++hdr"        => [qw( text/plain )],
@@ -536,6 +538,9 @@ For a detailed history see the F<Changes> file included in this distribution.
 The L<MIME::Types> module has a similar functionality, but with a more
 complex interface.
 
+L<LWP::MediaTypes> will guess the media type from a file extension,
+attempting to use the F<~/.media.types> file.
+
 An "official" list of Media Types can be found at
 L<http://www.iana.org/assignments/media-types>.
 
@@ -569,6 +574,7 @@ under the same terms as Perl itself.
 
 __DATA__
 application/andrew-inset			ez
+application/annodex                             anx
 application/atom+xml				atom
 application/atomcat+xml				atomcat
 application/atomserv+xml			atomsrv
@@ -579,6 +585,7 @@ application/dsptype				tsp
 application/envoy                               evy
 application/fractals                            fif
 application/futuresplash			spl
+application/x-gedcom                            ged
 application/hta					hta
 application/internet-property-stream            acx
 application/javascript                          js
@@ -594,7 +601,7 @@ application/msword				doc dot
 application/mxf                                 mxf
 application/octet-stream			bin
 application/oda					oda
-application/ogg					ogg ogx
+application/ogg					ogx ogg
 application/pdf					pdf
 application/x-perfmon                           pma pmc pml pmr pmw
 application/pgp-encrypted                       pgp asc
@@ -620,6 +627,7 @@ application/smil				smi smil
 application/wordperfect				wpd doc
 application/wordperfect5.1			wp5
 application/xhtml+xml				xhtml xht
+application/xspf+xml                            xspf
 application/xml					xml xsl
 application/xml-dtd                             dtd
 application/zip					zip
@@ -783,11 +791,12 @@ application/x-x509-ca-cert			crt
 application/x-xcf				xcf
 application/x-xfig				fig
 application/x-xpinstall				xpi
+audio/annodex                                   axa
 audio/basic					au snd
 audio/midi					mid midi kar
 audio/mpeg					mpga mpega mp2 mp3 m4a
 audio/mpegurl					m3u
-audio/ogg					oga spx
+audio/ogg					oga spx ogg
 audio/prs.sid					sid
 audio/x-aiff					aif aiff aifc
 audio/x-gsm					gsm
@@ -938,6 +947,7 @@ text/x-tex					tex ltx sty cls
 text/x-vcalendar				vcs
 text/x-vcard					vcf
 video/3gpp					3gp
+video/annodex                                   axv
 video/dl					dl
 video/dv					dif dv
 video/fli					fli
