@@ -1,0 +1,14 @@
+Revision history for Media-Type-Simple
+
+0.02    26 January 2009
+	- Renamed to Media::Type::Simple
+	- Changed distro to Makemaker-based since Module::Build cannot
+	  handle locally-scoped package declarations.
+	- Additional documentation (mostly internal).
+	- Removed undocumented or oo-only methods from default exports
+	- Changes to MIME types, esp. removed those w/out extensions.
+
+0.01    22 January 2009
+        - First version of MIME::Type::Simple.
+
+
