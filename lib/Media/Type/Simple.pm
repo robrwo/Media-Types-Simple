@@ -6,6 +6,8 @@ use warnings;
 use Carp;
 use Storable qw( freeze thaw );
 
+use version 0.77; our $VERSION = version->declare('v0.30.1');
+
 # TODO - option to disable reading of MIME types with no associated extensions
 
 {
@@ -32,34 +34,7 @@ The following non-core modules are required:
 
   Sub::Exporter
 
-=head1 INSTALLATION
-
-Installation can be done using the traditional Makefile.PL or the newer
-Build.PL methods.
-
-Using Makefile.PL:
-
-  perl Makefile.PL
-  make test
-  make install
-
-(On Windows platforms you should use C<nmake> instead.)
-
-Using Build.PL (if you have Module::Build installed):
-
-  perl Build.PL
-  perl Build test
-  perl Build install
-
 =end readme
-
-=head1 VERSION
-
-Version v0.30.1
-
-=cut
-
-use version 0.77; our $VERSION = version->declare('v0.30.1');
 
 =head1 SYNOPSIS
 
@@ -68,7 +43,6 @@ use version 0.77; our $VERSION = version->declare('v0.30.1');
   $type = type_from_ext("jpg");        # returns "image/jpeg"
 
   $ext  = ext_from_type("text/plain"); # returns "txt"
-
 
 =head1 DESCRIPTION
 
@@ -95,7 +69,6 @@ data.)
 
 my $Default; # Pristine copy of __DATA__
 my $Work;    # Working copy of __DATA__
-
 
 =over
 

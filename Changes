@@ -1,10 +1,13 @@
 Revision history for Media-Type-Simple
 
 v0.30.1
-
-  - changed to use tuble versioning.
-
+  [Documentation]
   - Changes conform to CPAN::Meta::Changes spec.
+
+  - Removed INSTALLATION and VERSION sections from POD.
+
+  [Other Changes]
+  - Changed to use tuble versioning.
 
 0.03  2009-03-25
 
