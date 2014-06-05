@@ -67,7 +67,7 @@ our $VERSION = '0.03';
 
   $type = type_from_ext("jpg");        # returns "image/jpeg"
 
-  $ext  = ext_from_type("text/plain"); # returns "txt"  
+  $ext  = ext_from_type("text/plain"); # returns "txt"
 
 
 =head1 DESCRIPTION
@@ -180,7 +180,7 @@ sub _args {
     }
 
     my @args = @DB::args;
-    
+
     if (ref($args[0]) ne __PACKAGE__) {
 	unless (defined $Work) {
 	    $Work = __PACKAGE__->new();
@@ -219,8 +219,8 @@ sub add_types_from_file {
 	$line =~ s/\s+$//;
 
 	if ($line) {
-	    self->add_type(split /\s+/, $line); 
-	}	
+	    self->add_type(split /\s+/, $line);
+	}
     }
     return self;
 }
@@ -302,7 +302,7 @@ returns the list
        "text/c++src"        => [qw( text/plain )],
        "text/chdr"          => [qw( text/plain )],
        "text/fortran"       => [qw( text/plain )],
-    ); 
+    );
 
 
   sub _normalise {
@@ -346,7 +346,7 @@ returns the list
 	my ($cat, $spec)  = _normalise($type);
 
 	my %alts  = ( );
-	my @cases = ( "$cat/$spec", "$cat/x-$spec", "x-$cat/x-$spec", 
+	my @cases = ( "$cat/$spec", "$cat/x-$spec", "x-$cat/x-$spec",
 		      "$cat/vnd.$spec" );
 
 	push @cases, @{ $SPEC_CASES{"$cat/$spec"} },
@@ -451,7 +451,7 @@ L</add_types_from_file> or calls to L</add_type>).
 sub type_from_ext {
     my ($ext)  = args;
 
-    if (my $ts = self->is_ext($ext)) {	
+    if (my $ts = self->is_ext($ext)) {
 	my @types = map { $_ } @$ts;
 	return (wantarray ? @types : $types[0]);
     }
@@ -498,10 +498,10 @@ sub add_type {
 	}
 	push @{ self->{types}->{$cat}->{$spec} }, @exts;
 
-	
+
 	foreach (@exts) {
 	    self->{extens}->{$_} = [] unless (exists self->{extens}->{$_});
-	    push @{self->{extens}->{$_}}, $type 
+	    push @{self->{extens}->{$_}}, $type
 	}
     }
 }
@@ -644,7 +644,7 @@ application/vnd.lotus-wordpro                   lwp
 application/vnd.mozilla.xul+xml			xul
 application/vnd.ms-artgalry
 application/vnd.ms-asf
-application/vnd.ms-excel			xls xlt xla xlb xlc xlm xlw 
+application/vnd.ms-excel			xls xlt xla xlb xlc xlm xlw
 application/vnd.ms-lrm
 application/vnd.ms-outlook                      msg
 application/vnd.ms-pki.seccat			cat
@@ -869,8 +869,8 @@ image/g3fax                                     g3
 image/gif					gif
 image/ief					ief
 image/jpeg					jpeg jpg jpe jfif
-image/pipeg					jpeg jpg jpe jfif 
-image/pjpeg					jpeg jpg jpe jfif 
+image/pipeg					jpeg jpg jpe jfif
+image/pjpeg					jpeg jpg jpe jfif
 image/pcx					pcx
 image/png					png
 image/svg+xml					svg svgz
