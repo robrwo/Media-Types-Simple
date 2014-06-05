@@ -1,23 +1,43 @@
-
+use v5.10;
 use strict;
-use warnings;
-use ExtUtils::MakeMaker;
+use warnings FATAL => 'all';
+use inc::Module::Install;
 
-WriteMakefile(
-    NAME                => 'Media::Type::Simple',
-    AUTHOR              => 'Robert Rothenberg <rrwo@cpan.org>',
-    VERSION_FROM        => 'lib/Media/Type/Simple.pm',
-    ABSTRACT_FROM       => 'lib/Media/Type/Simple.pm',
-    ($ExtUtils::MakeMaker::VERSION >= 6.3002
-      ? ('LICENSE'=> 'perl')
-      : ()),
-    PL_FILES            => {},
-    PREREQ_PM => {
-        'Carp'       => 0,
-        'Storable'   => 0,
-        'Sub::Exporter' => 0,
-        'Test::More' => 0,
-    },
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'Media-Type-Simple-*' },
+name 'Media-Type-Simple';
+all_from 'lib/Media/Type/Simple.pm';
+license 'artistic2';
+
+perl_version 5.010;
+
+tests_recursive('t');
+
+# tests_recursive('xt');
+
+resources(
+    homepage   => 'http://rrwo.tumblr.com',
+    license    => 'http://www.perlfoundation.org/artistic_license_2_0',
+    repository => 'git://github.com/robrwo/Media-Type-Simple.git',
+    bugtracker => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Media-Type-Simple',
 );
+
+configure_requires();
+
+build_requires();
+
+requires(
+    'Carp'          => 0,
+    'Storable'      => 0,
+    'Sub::Exporter' => 0,
+    'version'       => 0.77,
+);
+
+recommends(
+);
+
+test_requires(
+    'Test::More'      => 0,
+);
+
+install_as_cpan;
+auto_install;
+WriteAll;
