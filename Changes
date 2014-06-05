@@ -1,5 +1,7 @@
 Revision history for Media-Type-Simple
 
+  - Added test for RT #46475.
+
 v0.30.2  2014-06-05
 
   - Fixed missing prerequisite.

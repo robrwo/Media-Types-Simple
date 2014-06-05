@@ -36,6 +36,7 @@ recommends(
 );
 
 test_requires(
+    'Test::Fork'      => 0,
     'Test::More'      => 0,
 );
 

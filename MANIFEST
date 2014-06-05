@@ -20,3 +20,4 @@ README
 share/mime.types
 t/00-load.t
 t/01-basic.t
+t/02-fork.t
