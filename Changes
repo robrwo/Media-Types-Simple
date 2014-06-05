@@ -1,19 +1,35 @@
 Revision history for Media-Type-Simple
 
-0.03
-	- removed MIME::Type::Simple stub
-	- minor updates of documentation
-	- minor updates to MIME types
+v0.30.1
 
-0.02    26 January 2009
-	- Renamed to Media::Type::Simple
-	- Changed distro to Makemaker-based since Module::Build cannot
-	  handle locally-scoped package declarations.
-	- Additional documentation (mostly internal).
-	- Removed undocumented or oo-only methods from default exports
-	- Changes to MIME types, esp. removed those w/out extensions.
+  - changed to use tuble versioning.
 
-0.01    22 January 2009
-        - First version of MIME::Type::Simple.
+  - Changes conform to CPAN::Meta::Changes spec.
+
+0.03  2009-03-25
+
+  - removed MIME::Type::Simple stub.
+
+  - minor updates of documentation.
+
+  - minor updates to MIME types.
+
+0.02  2009-01-26
+
+  - Renamed to Media::Type::Simple.
+
+  - Changed distro to Makemaker-based since Module::Build cannot.
+
+  - handle locally-scoped package declarations.
+
+  - Additional documentation (mostly internal).
+
+  - Removed undocumented or oo-only methods from default exports.
+
+  - Changes to MIME types, esp. removed those w/out extensions.
+
+0.01  2009-01-22
+
+  - First version of MIME::Type::Simple.
 
 
