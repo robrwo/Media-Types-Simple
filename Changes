@@ -1,14 +1,17 @@
 Revision history for Media-Type-Simple
 
 v0.30.1
+  [Compatability Changes]
+  - Changed to use tuble versioning.
+
+  - Requires Perl v5.10.0.
+
   [Documentation]
   - Changes conform to CPAN::Meta::Changes spec.
 
   - Removed INSTALLATION and VERSION sections from POD.
 
   [Other Changes]
-  - Changed to use tuble versioning.
-
   - Removed QA tests from the distro but keep them in the git repo.
 
 0.03  2009-03-25

@@ -1,5 +1,7 @@
 package Media::Type::Simple;
 
+use v5.10.0;
+
 use strict;
 use warnings;
 
@@ -529,7 +531,7 @@ L<http://rt.cpan.org> to submit bug reports.
 =head1 ACKNOWLEDGEMENTS
 
 Some of the code comes from L<self> module (by Kang-min Liu).  The data
-for the media types is based on the Debian mime-support package,
+for the media types is based on the Debian C<mime-support> package,
 L<http://packages.debian.org/mime-support>,
 although with I<many> changes from the original.
 
