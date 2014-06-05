@@ -25,10 +25,11 @@ configure_requires();
 build_requires();
 
 requires(
-    'Carp'          => 0,
-    'Storable'      => 0,
-    'Sub::Exporter' => 0,
-    'version'       => 0.77,
+    'Carp'           => 0,
+    'File::ShareDir' => 0,
+    'Storable'       => 0,
+    'Sub::Exporter'  => 0,
+    'version'        => 0.77,
 );
 
 recommends(
@@ -38,6 +39,9 @@ test_requires(
     'Test::More'      => 0,
 );
 
+install_share 'share';
+
 install_as_cpan;
 auto_install;
 WriteAll;
+

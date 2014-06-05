@@ -4,6 +4,7 @@ MANIFEST.SKIP
 Makefile.PL
 README
 lib/Media/Type/Simple.pm
+share/mime.types
 t/00-load.t
 t/01-basic.t
 
