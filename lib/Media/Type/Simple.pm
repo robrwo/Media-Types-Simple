@@ -56,13 +56,13 @@ file extensions.
 It is also relaxed with respect to having multiple media types
 associated with a file extension, or multiple extensions associated
 with a media type, and it includes media types for encodings such
-as F<gzip>.  It is defined this way in the default data, but
+as C<gzip>.  It is defined this way in the default data, but
 this does not meet your needs, then you can have it use a system file
 (e.g. F</etc/mime.types>) or custom data.
 
 By default, there is a functional interface, although you can also use
-an object-oriented inteface.  (Different objects will not share the same
-data.)
+an object-oriented interface.  (Different objects will not share the
+same data.)
 
 =for readme stop
 
@@ -446,7 +446,7 @@ sub type_from_ext {
 
   ($content_type, $subtype) = split_type( $type );
 
-This is a utlity function for splitting content types.
+This is a utility function for splitting content types.
 
 =end internal
 
