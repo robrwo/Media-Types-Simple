@@ -55,11 +55,11 @@ Using Build.PL (if you have Module::Build installed):
 
 =head1 VERSION
 
-Version 0.03
+Version v0.30.1
 
 =cut
 
-our $VERSION = '0.03';
+use version 0.77; our $VERSION = version->declare('v0.30.1');
 
 =head1 SYNOPSIS
 
