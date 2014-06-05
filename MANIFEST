@@ -1,9 +1,9 @@
 Changes
 MANIFEST
+MANIFEST.SKIP
 Makefile.PL
 README
 lib/Media/Type/Simple.pm
 t/00-load.t
 t/01-basic.t
-t/pod-coverage.t
-t/pod.t
+
