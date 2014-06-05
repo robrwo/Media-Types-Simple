@@ -6,6 +6,9 @@ v0.30.1
 
   - Requires Perl v5.10.0.
 
+  [Bug Fixes]
+  - Fix for RT #46475 by installing data file with the distribution.
+
   [Documentation]
   - Changes conform to CPAN::Meta::Changes spec.
 
