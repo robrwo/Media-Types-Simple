@@ -11,8 +11,12 @@ v0.30.1
 
   - Removed INSTALLATION and VERSION sections from POD.
 
+  - Minor tweaks to POD.
+
   [Other Changes]
   - Removed QA tests from the distro but keep them in the git repo.
+
+  - Uses Module::Install for the Makefile.PL.
 
 0.03  2009-03-25
 
