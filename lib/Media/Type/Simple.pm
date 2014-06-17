@@ -9,7 +9,7 @@ use Carp;
 use File::Share qw/ dist_file /;
 use Storable qw( freeze thaw );
 
-use version 0.77; our $VERSION = version->declare('v0.30.3');
+use version 0.77; our $VERSION = version->declare('v0.30.4');
 
 # TODO - option to disable reading of MIME types with no associated extensions
 
