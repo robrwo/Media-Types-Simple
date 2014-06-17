@@ -9,7 +9,7 @@ use Carp;
 use File::Share qw/ dist_file /;
 use Storable qw( freeze thaw );
 
-use version 0.77; our $VERSION = version->declare('v0.30.2');
+use version 0.77; our $VERSION = version->declare('v0.30.4');
 
 # TODO - option to disable reading of MIME types with no associated extensions
 
@@ -528,17 +528,28 @@ L<http://www.iana.org/assignments/media-types>.
 
 Robert Rothenberg <rrwo at cpan.org>
 
-=head2 Suggestions and Bug Reporting
+=head2 Contributors
 
-Feedback is always welcome.  Please use the CPAN Request Tracker at
-L<http://rt.cpan.org> to submit bug reports.
+=over
 
-=head1 ACKNOWLEDGEMENTS
+=item Martin McGath
+
+=back
+
+=head2 Acknowledgements
 
 Some of the code comes from L<self> module (by Kang-min Liu).  The data
 for the media types is based on the Debian C<mime-support> package,
 L<http://packages.debian.org/mime-support>,
 although with I<many> changes from the original.
+
+=head2 Suggestions and Bug Reporting
+
+Feedback is always welcome.  Please use the CPAN Request Tracker at
+L<http://rt.cpan.org> to submit bug reports.
+
+The git repository for this module is at
+L<https://github.com/robrwo/Media-Types-Simple>.
 
 =head1 COPYRIGHT & LICENSE
 

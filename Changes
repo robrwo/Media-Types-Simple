@@ -1,12 +1,26 @@
 Revision history for Media-Type-Simple
 
+v0.30.4  2014-06-17
+  [Documentation]
+  - Corrected typo in Changes.
+
+  - Minor changes to POD.
+
+  [Other Changes]
+  - Added test for RT #46475.
+
+  - Added missing dependency as per RT #96393 [Martin McGrath].
+
+  - Fixed typo of git repo URL in Makefile.PL [Martin McGrath].
+
+
 v0.30.2  2014-06-05
 
   - Fixed missing prerequisite.
 
 v0.30.1  2014-06-05
   [Compatability Changes]
-  - Changed to use tuble versioning.
+  - Changed to use tuple versioning.
 
   - Requires Perl v5.10.0.
 
