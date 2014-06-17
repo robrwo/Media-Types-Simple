@@ -6,6 +6,10 @@ Revision history for Media-Type-Simple
   [Other Changes]
   - Added test for RT #46475.
 
+  - Added missing dependency as per RT #96393 [Martin McGrath].
+
+  - Fixed typo of git repo URL in Makefile.PL [Martin McGrath].
+
 
 v0.30.2  2014-06-05
 
