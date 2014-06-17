@@ -16,7 +16,7 @@ tests_recursive('t');
 resources(
     homepage   => 'http://rrwo.tumblr.com',
     license    => 'http://www.perlfoundation.org/artistic_license_2_0',
-    repository => 'git://github.com/robrwo/Media-Type-Simple.git',
+    repository => 'git://github.com/robrwo/Media-Types-Simple.git',
     bugtracker => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Media-Type-Simple',
 );
 
@@ -26,6 +26,7 @@ build_requires();
 
 requires(
     'Carp'           => 0,
+    'File::Share'    => 0,
     'File::ShareDir' => 0,
     'Storable'       => 0,
     'Sub::Exporter'  => 0,
