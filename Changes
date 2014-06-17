@@ -3,6 +3,8 @@ Revision history for Media-Type-Simple
   [Documentation]
   - Corrected typo in Changes.
 
+  - Minor changes to POD.
+
   [Other Changes]
   - Added test for RT #46475.
 
