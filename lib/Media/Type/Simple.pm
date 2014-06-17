@@ -532,7 +532,7 @@ Robert Rothenberg <rrwo at cpan.org>
 
 =over
 
-=item Martin McGath
+=item Martin McGrath
 
 =back
 
