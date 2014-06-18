@@ -4,6 +4,8 @@ v0.30.5
   [Other Changes]
   - Minor changes to tests.
 
+  - Uses Exporter::Lite instead of Sub::Exporter.
+
 v0.30.4  2014-06-17
   [Documentation]
   - Corrected typo in Changes.
