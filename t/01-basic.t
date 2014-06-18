@@ -7,7 +7,7 @@ use Test::More;
 
 plan tests => 32;
 
-use_ok("Media::Type::Simple", 0.02);
+use_ok("Media::Type::Simple");
 
 can_ok("Media::Type::Simple",
   qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext add_type ));
@@ -46,7 +46,7 @@ my @ts = type_from_ext("jpeg");
 is_deeply(\@ts, [qw( image/jpeg image/pipeg image/pjpeg )], "array type_from_ext");
 
 {
-  local $TODO = "option to allow no extensions enabled"; 
+  local $TODO = "option to allow no extensions enabled";
 
   ok(is_type("application/http"), "is_type");
   @es = ext_from_type("application/http");

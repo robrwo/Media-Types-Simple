@@ -6,24 +6,16 @@ use strict;
 use warnings;
 
 use Carp;
+use Exporter::Lite;
 use File::Share qw/ dist_file /;
 use Storable qw( freeze thaw );
 
-use version 0.77; our $VERSION = version->declare('v0.30.4');
+use version 0.77; our $VERSION = version->declare('v0.30.5');
+
+our @EXPORT = qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext );
+our @EXPORT_OK = (@EXPORT, qw/ add_type /);
 
 # TODO - option to disable reading of MIME types with no associated extensions
-
-{
-  # no strict 'refs';
-
-  use Sub::Exporter -setup => {
-    exports => [qw( is_type alt_types ext_from_type ext3_from_type
-                    is_ext type_from_ext add_type )],
-    groups  => {
-      default => [qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext) ],
-    }
-  }
-}
 
 =head1 NAME
 
@@ -35,7 +27,9 @@ Media::Type::Simple - MIME Types and their file extensions
 
 The following non-core modules are required:
 
-  Sub::Exporter
+  Exporter::Lite
+  File::Share
+  File::ShareDir
 
 =end readme
 

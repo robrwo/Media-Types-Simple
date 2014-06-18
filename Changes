@@ -1,5 +1,14 @@
 Revision history for Media-Type-Simple
 
+v0.30.5
+  [Documentation]
+  - Added missing requirements to POD and README.
+
+  [Other Changes]
+  - Minor changes to tests.
+
+  - Uses Exporter::Lite instead of Sub::Exporter.
+
 v0.30.4  2014-06-17
   [Documentation]
   - Corrected typo in Changes.
