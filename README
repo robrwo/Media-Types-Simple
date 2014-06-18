@@ -4,7 +4,9 @@ NAME
 REQUIREMENTS
     The following non-core modules are required:
 
-      Sub::Exporter
+      Exporter::Lite
+      File::Share
+      File::ShareDir
 
 SYNOPSIS
       use Media::Type::Simple;

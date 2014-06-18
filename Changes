@@ -1,6 +1,9 @@
 Revision history for Media-Type-Simple
 
 v0.30.5
+  [Documentation]
+  - Added missing requirements to POD and README.
+
   [Other Changes]
   - Minor changes to tests.
 

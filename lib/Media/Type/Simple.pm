@@ -28,6 +28,8 @@ Media::Type::Simple - MIME Types and their file extensions
 The following non-core modules are required:
 
   Exporter::Lite
+  File::Share
+  File::ShareDir
 
 =end readme
 
