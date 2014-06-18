@@ -8,7 +8,7 @@ use warnings;
 use Carp;
 use Exporter::Lite;
 use File::Share qw/ dist_file /;
-use Storable qw( freeze thaw );
+use Storable qw/ freeze thaw /;
 
 use version 0.77; our $VERSION = version->declare('v0.30.5');
 
