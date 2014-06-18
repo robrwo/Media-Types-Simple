@@ -1,5 +1,9 @@
 Revision history for Media-Type-Simple
 
+v0.30.5
+  [Other Changes]
+  - Minor changes to tests.
+
 v0.30.4  2014-06-17
   [Documentation]
   - Corrected typo in Changes.
