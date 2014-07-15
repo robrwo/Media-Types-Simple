@@ -16,3 +16,5 @@ Media-Type-Simple-.*\.tar\.gz
 # QA tests not needed for distribution
 
 ^xt/
+
+^\.travis\.yml$
