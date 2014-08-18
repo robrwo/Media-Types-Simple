@@ -5,7 +5,7 @@ use inc::Module::Install;
 
 name 'Media-Type-Simple';
 all_from 'lib/Media/Type/Simple.pm';
-license 'artistic2';
+license 'artistic_2';
 
 perl_version 5.010;
 
@@ -46,4 +46,3 @@ install_share 'share';
 install_as_cpan;
 auto_install;
 WriteAll;
-

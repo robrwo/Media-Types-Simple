@@ -1,5 +1,9 @@
 Revision history for Media-Type-Simple
 
+v0.30.7
+  [Other Changes]
+  - Fixed license in Makefile.PL to make CPANTS happy.
+
 v0.30.6  2014-06-18
   [Documentation]
   - Added missing requirements to POD and README.
@@ -73,5 +77,3 @@ v0.30.1  2014-06-05
 0.01  2009-01-22
 
   - First version of MIME::Type::Simple.
-
-
