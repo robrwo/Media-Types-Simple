@@ -223,7 +223,7 @@ releases.
 sub is_type {
     my ($type) = args;
     my ($cat, $spec)  = split_type($type);
-    return if ! length $spec;
+    return if ! defined $spec || ! length $spec;
     return self->{types}->{$cat}->{$spec};
 }
 
