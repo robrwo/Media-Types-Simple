@@ -21,6 +21,8 @@ v0.31.0
   - Removed minimum version of version, since some toolchains get
     confused by this.
 
+  - Removed redundant test of module load.
+
 v0.30.6  2014-06-18
   [Documentation]
   - Added missing requirements to POD and README.
