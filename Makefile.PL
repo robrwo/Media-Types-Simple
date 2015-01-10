@@ -37,8 +37,9 @@ recommends(
 );
 
 test_requires(
-    'Test::Fork'      => 0,
-    'Test::More'      => 0,
+    'Test::Fork'       => 0,
+    'Test::More'       => 0,
+    'Test::NoWarnings' => 0,
 );
 
 install_share 'share';
