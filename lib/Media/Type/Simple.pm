@@ -8,9 +8,9 @@ use warnings;
 use Carp;
 use Exporter::Lite;
 use File::Share qw/ dist_file /;
-use Storable qw( freeze thaw );
+use Storable qw/ dclone /;
 
-use version 0.77; our $VERSION = version->declare('v0.30.6');
+use version 0.77; our $VERSION = version->declare('v0.31.0');
 
 our @EXPORT = qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext );
 our @EXPORT_OK = (@EXPORT, qw/ add_type /);
@@ -223,6 +223,7 @@ releases.
 sub is_type {
     my ($type) = args;
     my ($cat, $spec)  = split_type($type);
+    return if ! defined $spec || ! length $spec;
     return self->{types}->{$cat}->{$spec};
 }
 
@@ -377,9 +378,9 @@ sub ext3_from_type {
 
 =item is_ext
 
-  if (is_ext("image/jpeg")) { ... }
+  if (is_ext("jpeg")) { ... }
 
-  if ($o->is_type("image/jpeg")) { ... }
+  if ($o->is_ext("jpeg")) { ... }
 
 Returns a true value if the extension is defined in the system.
 
@@ -495,7 +496,7 @@ This can I<only> be used in the object-oriented interface.
 sub clone {
     my $self = shift;
     croak "Expected instance" if (ref($self) ne __PACKAGE__);
-    return thaw( freeze $self );
+    return dclone( $self );
 }
 
 
@@ -505,7 +506,8 @@ sub clone {
 
 =head1 REVISION HISTORY
 
-For a detailed history see the F<Changes> file included in this distribution.
+For a detailed history see the F<Changes> file included in this
+distribution.
 
 =head1 SEE ALSO
 
@@ -525,6 +527,8 @@ Robert Rothenberg <rrwo at cpan.org>
 =head2 Contributors
 
 =over
+
+=item Russell Jenkins
 
 =item Martin McGrath
 
@@ -547,7 +551,7 @@ L<https://github.com/robrwo/Media-Types-Simple>.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009-2014 Robert Rothenberg, all rights reserved.
+Copyright 2009-2015 Robert Rothenberg, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

@@ -1,5 +1,30 @@
 Revision history for Media-Type-Simple
 
+v0.31.0
+  [Documentation]
+  - Corrected is_ext() usage in POD  [Russell Jenkins].
+
+  - Minor updates to POD.
+
+  [Bug Fixes]
+  - Fixed RT 66513 [Russell Jenkins].
+
+  [Enhancements]
+  - Use Storable's dclone instead of freeze/thaw.
+
+  [Other Changes]
+  - Fixed license in Makefile.PL to make CPANTS happy.
+
+  - Test::NoWarnings is replaced by Test::Warnings, and is optional
+    (and only used for author testing).
+
+  - Removed minimum version of version, since some toolchains get
+    confused by this.
+
+  - Removed redundant test of module load.
+
+  - Minor tweaks to test scripts.
+
 v0.30.6  2014-06-18
   [Documentation]
   - Added missing requirements to POD and README.
@@ -73,5 +98,3 @@ v0.30.1  2014-06-05
 0.01  2009-01-22
 
   - First version of MIME::Type::Simple.
-
-

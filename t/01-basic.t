@@ -4,8 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-plan tests => 32;
+use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
 
 use_ok("Media::Type::Simple");
 
@@ -15,6 +14,9 @@ can_ok("Media::Type::Simple",
 ok(is_type("image/jpeg"), "is_type");
 
 ok(!is_type("image/wxyz-foobar"), "is_type");
+ok(!is_type("image/"), "is_type - false if no subtype provided");
+ok(!is_type("image"), "is_type - false when only type provided");
+ok(!is_type(""), "is_type - empty string returns false");
 
 my @as = alt_types("image/jpeg");
 is_deeply(\@as, [qw( image/jpeg image/pipeg image/pjpeg )], "alt_types");
@@ -41,6 +43,7 @@ $e = ext3_from_type("image/jpeg");
 is($e, "jpg", "scalar ext3_from_type");
 
 ok(is_ext("jpeg"), "is_ext");
+ok(!is_ext(""), "is_ext - empty string returns false");
 
 my @ts = type_from_ext("jpeg");
 is_deeply(\@ts, [qw( image/jpeg image/pipeg image/pjpeg )], "array type_from_ext");
@@ -101,10 +104,10 @@ is($t, "image/jpeg", "scalar type_from_ext");
 	@es = $o->ext_from_type("image/jpeg");
 	is_deeply(\@es, [qw( jpeg jpg jpe jfif jpeg_file )], "add_exten");
 
+
+        ok my $c = $o->clone, 'clone';
+
+	ok($c->isa("Media::Type::Simple"), "isa");
 }
 
-
-
-
-
-
+done_testing;
