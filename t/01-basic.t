@@ -106,6 +106,8 @@ is($t, "image/jpeg", "scalar type_from_ext");
 
 
         ok my $c = $o->clone, 'clone';
+
+	ok($c->isa("Media::Type::Simple"), "isa");
 }
 
 done_testing;
