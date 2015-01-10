@@ -1,6 +1,6 @@
 Revision history for Media-Type-Simple
 
-v0.30.7
+v0.31.0
   [Other Changes]
   - Fixed license in Makefile.PL to make CPANTS happy.
 

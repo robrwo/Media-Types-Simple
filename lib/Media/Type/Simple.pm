@@ -10,7 +10,7 @@ use Exporter::Lite;
 use File::Share qw/ dist_file /;
 use Storable qw/ freeze thaw /;
 
-use version 0.77; our $VERSION = version->declare('v0.30.7');
+use version 0.77; our $VERSION = version->declare('v0.31.0');
 
 our @EXPORT = qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext );
 our @EXPORT_OK = (@EXPORT, qw/ add_type /);
