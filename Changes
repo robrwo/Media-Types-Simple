@@ -9,6 +9,9 @@ v0.31.0
   [Bug Fixes]
   - Fixed RT 66513 [Russell Jenkins].
 
+  [Enhancements]
+  - Use Storable's dclone instead of freeze/thaw.
+
   [Other Changes]
   - Fixed license in Makefile.PL to make CPANTS happy.
 

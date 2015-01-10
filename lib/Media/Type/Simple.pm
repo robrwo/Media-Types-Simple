@@ -8,7 +8,7 @@ use warnings;
 use Carp;
 use Exporter::Lite;
 use File::Share qw/ dist_file /;
-use Storable qw/ freeze thaw /;
+use Storable qw/ dclone /;
 
 use version 0.77; our $VERSION = version->declare('v0.31.0');
 
@@ -496,7 +496,7 @@ This can I<only> be used in the object-oriented interface.
 sub clone {
     my $self = shift;
     croak "Expected instance" if (ref($self) ne __PACKAGE__);
-    return thaw( freeze $self );
+    return dclone( $self );
 }
 
 
