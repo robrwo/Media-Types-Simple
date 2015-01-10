@@ -506,7 +506,8 @@ sub clone {
 
 =head1 REVISION HISTORY
 
-For a detailed history see the F<Changes> file included in this distribution.
+For a detailed history see the F<Changes> file included in this
+distribution.
 
 =head1 SEE ALSO
 
@@ -526,6 +527,8 @@ Robert Rothenberg <rrwo at cpan.org>
 =head2 Contributors
 
 =over
+
+=item Russell Jenkins
 
 =item Martin McGrath
 
@@ -548,7 +551,7 @@ L<https://github.com/robrwo/Media-Types-Simple>.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009-2014 Robert Rothenberg, all rights reserved.
+Copyright 2009-2015 Robert Rothenberg, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

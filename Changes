@@ -1,6 +1,14 @@
 Revision history for Media-Type-Simple
 
 v0.31.0
+  [Documentation]
+  - Corrected is_ext() usage in POD  [Russell Jenkins].
+
+  - Minor updates to POD.
+
+  [Bug Fixes]
+  - Fixed RT 66513 [Russell Jenkins].
+
   [Other Changes]
   - Fixed license in Makefile.PL to make CPANTS happy.
 
