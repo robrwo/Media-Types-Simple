@@ -377,9 +377,9 @@ sub ext3_from_type {
 
 =item is_ext
 
-  if (is_ext("image/jpeg")) { ... }
+  if (is_ext("jpeg")) { ... }
 
-  if ($o->is_type("image/jpeg")) { ... }
+  if ($o->is_ext("jpeg")) { ... }
 
 Returns a true value if the extension is defined in the system.
 
