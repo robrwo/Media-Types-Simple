@@ -23,6 +23,8 @@ v0.31.0
 
   - Removed redundant test of module load.
 
+  - Minor tweaks to test scripts.
+
 v0.30.6  2014-06-18
   [Documentation]
   - Added missing requirements to POD and README.
