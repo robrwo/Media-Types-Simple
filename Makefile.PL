@@ -30,16 +30,16 @@ requires(
     'File::Share'    => 0,
     'File::ShareDir' => 0,
     'Storable'       => 0,
-    'version'        => 0.77,
+    'version'        => 0,
 );
 
 recommends(
+    'Test::Warnings'   => 0,
 );
 
 test_requires(
     'Test::Fork'       => 0,
     'Test::More'       => 0,
-    'Test::NoWarnings' => 0,
 );
 
 install_share 'share';

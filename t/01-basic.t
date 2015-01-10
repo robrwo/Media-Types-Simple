@@ -4,9 +4,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Test::NoWarnings;
-
-plan tests => 37;
+use if $ENV{AUTHOR_TESTING} || $ENV{RELEASE_TESTING}, 'Test::Warnings';
 
 use_ok("Media::Type::Simple");
 
@@ -106,5 +104,8 @@ is($t, "image/jpeg", "scalar type_from_ext");
 	@es = $o->ext_from_type("image/jpeg");
 	is_deeply(\@es, [qw( jpeg jpg jpe jfif jpeg_file )], "add_exten");
 
+
+        ok my $c = $o->clone, 'clone';
 }
 
+done_testing;

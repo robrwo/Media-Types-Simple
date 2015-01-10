@@ -15,6 +15,12 @@ v0.31.0
   [Other Changes]
   - Fixed license in Makefile.PL to make CPANTS happy.
 
+  - Test::NoWarnings is replaced by Test::Warnings, and is optional
+    (and only used for author testing).
+
+  - Removed minimum version of version, since some toolchains get
+    confused by this.
+
 v0.30.6  2014-06-18
   [Documentation]
   - Added missing requirements to POD and README.
