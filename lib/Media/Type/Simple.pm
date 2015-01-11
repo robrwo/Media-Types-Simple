@@ -1,6 +1,6 @@
 package Media::Type::Simple;
 
-use v5.10.0;
+use v5.10.1;
 
 use strict;
 use warnings;
@@ -11,7 +11,7 @@ use Storable qw/ dclone /;
 
 use Class::NonOO;
 
-use version 0.77; our $VERSION = version->declare('v0.31.0');
+use version; our $VERSION = version->declare('v0.40.0_01');
 
 # TODO - option to disable reading of MIME types with no associated extensions
 
