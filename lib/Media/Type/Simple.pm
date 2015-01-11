@@ -6,11 +6,10 @@ use strict;
 use warnings;
 
 use Carp;
-use Exporter::Lite;
 use File::Share qw/ dist_file /;
 use Storable qw/ dclone /;
 
-use MooX::NonOO;
+use Class::NonOO;
 
 use version 0.77; our $VERSION = version->declare('v0.31.0');
 
