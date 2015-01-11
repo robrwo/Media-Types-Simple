@@ -10,10 +10,9 @@ use Exporter::Lite;
 use File::Share qw/ dist_file /;
 use Storable qw/ dclone /;
 
-use version 0.77; our $VERSION = version->declare('v0.31.0');
+use MooX::NonOO;
 
-our @EXPORT = qw( is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext );
-our @EXPORT_OK = (@EXPORT, qw/ add_type /);
+use version 0.77; our $VERSION = version->declare('v0.31.0');
 
 # TODO - option to disable reading of MIME types with no associated extensions
 
@@ -114,67 +113,6 @@ sub new {
     }
 }
 
-=begin internal
-
-=item _args
-
-An internal function used to process arguments, based on C<_args> from
-the L<self> package.  It also allows one to use it in non-object
-oriented mode.
-
-When L</_args> is called for the first time without a reference to the
-class instance, it checks to see if C<$Work> is defined, and it is
-initialised with L</new> if it is not defined.  This means that
-C<$Work> is only initialised when the module is used.
-
-=item self
-
-An internal function used in place of the C<$self> variable.
-
-=item args
-
-An internal function used in place of shifting arguments from stack.
-
-=end internal
-
-=cut
-
-# _args, self and args based on 'self' v0.15
-
-sub _args {
-    my $level = 2;
-    my @c = ();
-    while ( !defined($c[3]) || $c[3] eq '(eval)') {
-        @c = do {
-            package DB; # Module::Build hates this!
-            @DB::args = ();
-            caller($level);
-        };
-        $level++;
-    }
-
-    my @args = @DB::args;
-
-    if (ref($args[0]) ne __PACKAGE__) {
-	unless (defined $Work) {
-	    $Work = __PACKAGE__->new();
-	}
-	unshift @args, $Work;
-    }
-
-    return @args;
-}
-
-sub self {
-    (_args)[0];
-}
-
-sub args {
-    my @a = _args;
-    return @a[1..$#a];
-}
-
-
 =item add_types_from_file
 
   $o->add_types_from_file( $filehandle );
@@ -185,7 +123,7 @@ specified.
 =cut
 
 sub add_types_from_file {
-    my ($fh) = args;
+    my ($self, $fh) = @_;
 
     while (my $line = <$fh>) {
 	$line =~ s/^\s+//;
@@ -193,10 +131,10 @@ sub add_types_from_file {
 	$line =~ s/\s+$//;
 
 	if ($line) {
-	    self->add_type(split /\s+/, $line);
+	    $self->add_type(split /\s+/, $line);
 	}
     }
-    return self;
+    return $self;
 }
 
 =item is_type
@@ -221,10 +159,10 @@ releases.
 =cut
 
 sub is_type {
-    my ($type) = args;
+    my ($self, $type) = @_;
     my ($cat, $spec)  = split_type($type);
     return if ! defined $spec || ! length $spec;
-    return self->{types}->{$cat}->{$spec};
+    return $self->{types}->{$cat}->{$spec};
 }
 
 =item alt_types
@@ -317,7 +255,7 @@ returns the list
 
 
     sub alt_types {
-	my ($type) = args;
+	my ($self, $type) = @_;
 	my ($cat, $spec)  = _normalise($type);
 
 	my %alts  = ( );
@@ -328,7 +266,7 @@ returns the list
   	  if ($SPEC_CASES{"$cat/$spec"});
 
 	foreach ( @cases ) {
-	    $alts{$_} = 1, if (self->is_type($_));
+	    $alts{$_} = 1, if ($self->is_type($_));
 	}
 
 	return (sort keys %alts);
@@ -356,7 +294,8 @@ L</add_types_from_file> or calls to L</add_type>).
 =cut
 
 sub ext_from_type {
-    if (my $exts = self->is_type(args)) {
+  my ($self, $type) = @_;
+    if (my $exts = $self->is_type($type)) {
 	return (wantarray ? @$exts : $exts->[0]);
     }
     else {
@@ -372,7 +311,8 @@ characters long.
 =cut
 
 sub ext3_from_type {
-    my @exts = grep( (length($_) <= 3), (ext_from_type(@_)));
+  my ($self, $type) = @_;
+    my @exts = grep( (length($_) <= 3), ($self->ext_from_type($type)));
     return (wantarray ? @exts : $exts[0]);
 }
 
@@ -395,9 +335,9 @@ releases.
 =cut
 
 sub is_ext {
-    my ($ext)  = args;
-    if (exists self->{extens}->{$ext}) {
-	return self->{extens}->{$ext};
+    my ($self, $ext)  = @_;
+    if (exists $self->{extens}->{$ext}) {
+	return $self->{extens}->{$ext};
     }
     else {
 	return;
@@ -424,9 +364,9 @@ L</add_types_from_file> or calls to L</add_type>).
 =cut
 
 sub type_from_ext {
-    my ($ext)  = args;
+    my ($self, $ext)  = @_;
 
-    if (my $ts = self->is_ext($ext)) {
+    if (my $ts = $self->is_ext($ext)) {
 	my @types = map { $_ } @$ts;
 	return (wantarray ? @types : $types[0]);
     }
@@ -462,21 +402,23 @@ Add a type to the system, with an optional list of extensions.
 =cut
 
 sub add_type {
-    my ($type, @exts) = args;
+    my ($self, $type, @exts) = @_;
+
+    return unless $type;
 
     if (@exts || 1) { # TODO - option to ignore types with no extensions
 
 	my ($cat, $spec)  = split_type($type);
 
-	if (!self->{types}->{$cat}->{$spec}) {
-	    self->{types}->{$cat}->{$spec} = [ ];
+	if (!$self->{types}->{$cat}->{$spec}) {
+	    $self->{types}->{$cat}->{$spec} = [ ];
 	}
-	push @{ self->{types}->{$cat}->{$spec} }, @exts;
+	push @{ $self->{types}->{$cat}->{$spec} }, @exts;
 
 
 	foreach (@exts) {
-	    self->{extens}->{$_} = [] unless (exists self->{extens}->{$_});
-	    push @{self->{extens}->{$_}}, $type
+	    $self->{extens}->{$_} = [] unless (exists $self->{extens}->{$_});
+	    push @{$self->{extens}->{$_}}, $type
 	}
     }
 }
@@ -498,6 +440,12 @@ sub clone {
     croak "Expected instance" if (ref($self) ne __PACKAGE__);
     return dclone( $self );
 }
+
+as_function
+  export => [qw/ is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext add_type /];
+
+# TODO:
+# our @EXPORT_OK = (@EXPORT, qw/ add_type /);
 
 
 =back
