@@ -9,7 +9,7 @@ use Carp;
 use File::Share qw/ dist_file /;
 use Storable qw/ dclone /;
 
-use Class::NonOO;
+use Class::NonOO v0.3.0;
 
 use version; our $VERSION = version->declare('v0.40.0_01');
 

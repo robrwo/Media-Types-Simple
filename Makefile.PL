@@ -26,8 +26,7 @@ build_requires();
 
 requires(
     'Carp'           => 0,
-    'Class::NonOO'   => 0,
-    'Exporter::Lite'  => 0,
+    'Class::NonOO'   => '0.003000',
     'File::Share'    => 0,
     'File::ShareDir' => 0,
     'Storable'       => 0,
