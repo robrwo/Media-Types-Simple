@@ -2,16 +2,18 @@ package Media::Type::Simple;
 
 use v5.10.1;
 
-use strict;
-use warnings;
+use Moo;
 
 use Carp;
+use Clone qw/ clone /;
+use Types::Standard -types;
 use File::Share qw/ dist_file /;
-use Storable qw/ dclone /;
-
 use Class::NonOO v0.3.0;
 
-use version; our $VERSION = version->declare('v0.40.0_01');
+{
+  use version;
+  $Media::Type::Simple::VERSION = version->declare('v0.40.0_02');
+}
 
 # TODO - option to disable reading of MIME types with no associated extensions
 
@@ -90,39 +92,57 @@ made, e.g. L</add_type>, will not affect all other instances.
 
 =cut
 
-sub new {
-    my $class = shift;
-    my $self  = { types => { }, extens => { }, };
+has _types => (
+  is          => 'lazy',
+  isa         => HashRef,
+  default     => sub { {} },
+  init_arg    => undef,
+);
 
-    bless $self, $class;
+has _extentions => (
+  is       => 'lazy',
+  isa      => HashRef,
+  default  => sub { {} },
+  init_arg => undef,
+);
 
-    if (@_) {
-	my $fh = shift;
-	return $self->add_types_from_file( $fh );
-    }
-    else {
-	unless (defined $Default) {
-            my $file = dist_file('Media-Type-Simple', 'mime.types');
-            open my $fh, '<', $file
-                or croak "Unable to open ${file}: $!";
-	    $Default = $self->add_types_from_file( $fh );
-            close $fh;
-	}
-	return clone $Default;
-    }
+has _types_fh => (
+  is      => 'ro', # not lazy
+  builder => '_build_types_fh',
+);
+
+sub _build_types_fh {
+  my $file = dist_file('Media-Type-Simple', 'mime.types');
+  open my $fh, '<', $file
+    or croak "Unable to open ${file}: $!";
+  return $fh;
+}
+
+sub BUILDARGS {
+  my ($self, @args) = @_;
+  if (@args == 1) {
+    return { _types_fh => @args };
+  }
+  return { @args };
+}
+
+sub BUILD {
+  my ($self, $args) = @_;
+  $self->add_types_from_file($self->_types_fh);
 }
 
 =item add_types_from_file
 
   $o->add_types_from_file( $filehandle );
 
-Imports types from a file. Called by L</new> when a filehandle is
-specified.
+Imports types from a file.
 
 =cut
 
 sub add_types_from_file {
     my ($self, $fh) = @_;
+
+    # TODO: allow a filename as well as filehandle
 
     while (my $line = <$fh>) {
 	$line =~ s/^\s+//;
@@ -161,7 +181,7 @@ sub is_type {
     my ($self, $type) = @_;
     my ($cat, $spec)  = split_type($type);
     return if ! defined $spec || ! length $spec;
-    return $self->{types}->{$cat}->{$spec};
+    return $self->_types->{$cat}->{$spec};
 }
 
 =item alt_types
@@ -335,8 +355,8 @@ releases.
 
 sub is_ext {
     my ($self, $ext)  = @_;
-    if (exists $self->{extens}->{$ext}) {
-	return $self->{extens}->{$ext};
+    if (exists $self->_extentions->{$ext}) {
+	return $self->_extentions->{$ext};
     }
     else {
 	return;
@@ -409,15 +429,12 @@ sub add_type {
 
 	my ($cat, $spec)  = split_type($type);
 
-	if (!$self->{types}->{$cat}->{$spec}) {
-	    $self->{types}->{$cat}->{$spec} = [ ];
-	}
-	push @{ $self->{types}->{$cat}->{$spec} }, @exts;
-
+        $self->_types->{$cat}{$spec} //= [ ];
+        push @{ $self->_types->{$cat}{$spec} }, @exts;
 
 	foreach (@exts) {
-	    $self->{extens}->{$_} = [] unless (exists $self->{extens}->{$_});
-	    push @{$self->{extens}->{$_}}, $type
+	    $self->_extentions->{$_} //= [];
+	    push @{$self->_extentions->{$_}}, $type
 	}
     }
 }
@@ -434,14 +451,8 @@ This can I<only> be used in the object-oriented interface.
 
 =cut
 
-sub clone {
-    my $self = shift;
-    croak "Expected instance" if (ref($self) ne __PACKAGE__);
-    return dclone( $self );
-}
-
 as_function
-  export => [qw/ is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext add_type /];
+  export => [qw/ is_type alt_types ext_from_type ext3_from_type is_ext type_from_ext /];
 
 # TODO:
 # our @EXPORT_OK = (@EXPORT, qw/ add_type /);

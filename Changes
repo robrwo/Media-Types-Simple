@@ -1,5 +1,8 @@
 Revision history for Media-Type-Simple
 
+  [Enhancements]
+  - Significant code cleanup.
+
 v0.31.0  2015-01-10
   [Documentation]
   - Corrected is_ext() usage in POD  [Russell Jenkins].
